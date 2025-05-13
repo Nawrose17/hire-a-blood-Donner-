@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HIRE A BLOOD DONNER</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://www.shutterstock.com/image-photo/blood-texture-background-bloody-red-600nw-2499505389.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      margin: 40px auto;
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #ff4d4d;
+    }
+    p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .donor-info {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    .donor-info h2 {
+      color: #ff4d4d;
+    }
+    .donor {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HIRE A BLOOD DONNER</h1>
+    <p><strong>Terms and Conditions:</strong><br>
+      1. A donor can donate up to 450ml of blood at a time.<br>
+      2. The donor must have a minimum hemoglobin level of 12.5 g/dL.<br>
+      3. A person can donate blood every 3 months.<br>
+      4. The donor should be between 18 and 60 years old.<br>
+      5. Donors must weigh at least 50kg.<br>
+      6. Donor must be healthy and not have any transmissible diseases.<br>
+    </p>
+
+    <label for="bloodGroup">Select Blood Group:</label>
+    <select id="bloodGroup">
+      <option value="">--Choose--</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+    </select>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" placeholder="Enter your location">
+
+    <label for="phone">Caregiver's Phone Number:</label>
+    <input type="text" id="phone" placeholder="Enter victim's phone">
+
+    <label for="name">Caregiver's Name:</label>
+    <input type="text" id="name" placeholder="Enter victim's name">
+
+    <button id="confirmBtn">Confirm</button>
+
+    <div class="donor-info" id="donorInfoBox">
+      <h2>Available Donors</h2>
+      <div id="donorList"></div>
+    </div>
+  </div>
+
+  <script>
+    const donorData = {
+      "A+": [
+        { name: "Mahmud Rana", age: 25, address: "Vugra Taltola", phone: "01711111111" },
+        { name: "B", age: 30, address: "Banani, Dhaka", phone: "01722222222" },
+        { name: "C", age: 22, address: "Uttara, Dhaka", phone: "01733333333" },
+        { name: "D", age: 29, address: "Mohammadpur, Dhaka", phone: "01744444444" },
+        { name: "D", age: 35, address: "Mirpur, Dhaka", phone: "01755555555" }
+      ],
+      "A-": [
+        { name: "Ariyan", age: 23, address: "Gulshan, Dhaka", phone: "01811111111" },
+        { name: "F", age: 33, address: "Badda, Dhaka", phone: "01822222222" },
+        { name: "G", age: 24, address: "Tejgaon, Dhaka", phone: "01833333333" },
+        { name: "H", age: 28, address: "Rampura, Dhaka", phone: "01844444444" },
+        { name: "I", age: 31, address: "Shyamoli, Dhaka", phone: "01855555555" }
+      ],
+      "B+": [
+            { name: "Sourov", age: 25, address: "Vugra Taltola", phone: "01711111111" },
+        { name: "K", age: 30, address: "Banani, Dhaka", phone: "01722222222" },
+        { name: "L", age: 22, address: "Uttara, Dhaka", phone: "01733333333" },
+        { name: "M", age: 29, address: "Mohammadpur, Dhaka", phone: "01744444444" },
+        { name: "N", age: 35, address: "Mirpur, Dhaka", phone: "01755555555" }
+
+            ],
+
+      "B-": [
+              { name: "Jubayer", age: 25, address: "Dhanmondi, Dhaka", phone: "01711111111" },
+        { name: "P", age: 30, address: "Banani, Dhaka", phone: "01722222222" },
+        { name: "Q", age: 22, address: "Uttara, Dhaka", phone: "01733333333" },
+        { name: "R", age: 29, address: "Mohammadpur, Dhaka", phone: "01744444444" },
+        { name: "S", age: 35, address: "Mirpur, Dhaka", phone: "01755555555" }
+
+            ],
+
+      "O+": [
+        { name: "J", age: 26, address: "Baridhara, Dhaka", phone: "01911111111" },
+        { name: "Nawrose KhaN", age: 24, address: "Gazipur Chowrasta", phone: "01853319495" },
+        { name: "U", age: 34, address: "Jatrabari, Dhaka", phone: "01933333333" },
+        { name: "V", age: 28, address: "Kalabagan, Dhaka", phone: "01944444444" },
+        { name: "W", age: 32, address: "Savar, Dhaka", phone: "01955555555" }
+      ],
+
+      "O-": [
+         { name: "Imtihan Maruf", age: 25, address: "Kodda,Gazipur", phone: "01711111111" },
+        { name: "Y", age: 30, address: "Banani, Dhaka", phone: "01722222222" },
+        { name: "Z", age: 22, address: "Uttara, Dhaka", phone: "01733333333" },
+        { name: "Mahim", age: 29, address: "Mohammadpur, Dhaka", phone: "01744444444" },
+        { name: "Opo", age: 35, address: "Mirpur, Dhaka", phone: "01755555555" }
+
+            ],
+      "AB+": [
+            { name: "Zaman Bhai", age: 25, address: "Dhanmondi, Dhaka", phone: "01711111111" },
+        { name: "KK", age: 30, address: "Banani, Dhaka", phone: "01722222222" },
+        { name: "JJ", age: 22, address: "Uttara, Dhaka", phone: "01733333333" },
+        { name: "Ariful", age: 29, address: "Mohammadpur, Dhaka", phone: "01744444444" },
+        { name: "Xh", age: 35, address: "Mirpur, Dhaka", phone: "01755555555" }
+
+            ],
+      "AB-":
+        [{ name: "Raihanul", age: 25, address: "Dhanmondi, Dhaka", phone: "01711111111" },
+        { name: "NM", age: 30, address: "Banani, Dhaka", phone: "01722222222" },
+        { name: "SK", age: 22, address: "Uttara, Dhaka", phone: "01733333333" },
+        { name: "SD", age: 29, address: "Mohammadpur, Dhaka", phone: "01744444444" },
+        { name: "HD", age: 35, address: "Mirpur, Dhaka", phone: "01755555555" }
+]
+    };
+
+    document.getElementById("bloodGroup").addEventListener("change", function () {
+      const selected = this.value;
+      const infoBox = document.getElementById("donorInfoBox");
+      const list = document.getElementById("donorList");
+      list.innerHTML = "";
+
+      if (donorData[selected]) {
+        donorData[selected].forEach(donor => {
+          const div = document.createElement("div");
+          div.className = "donor";
+          div.innerHTML = `<strong>Name:</strong> ${donor.name}<br>
+                          <strong>Age:</strong> ${donor.age}<br>
+                          <strong>Address:</strong> ${donor.address}<br>
+                          <strong>Phone:</strong> ${donor.phone}`;
+          list.appendChild(div);
+        });
+        infoBox.style.display = "block";
+      } else {
+        infoBox.style.display = "none";
+      }
+    });
+
+    document.getElementById("confirmBtn").addEventListener("click", function () {
+      const bloodGroup = document.getElementById("bloodGroup").value;
+      const location = document.getElementById("location").value;
+      const phone = document.getElementById("phone").value;
+      const name = document.getElementById("name").value;
+
+      fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
+        method: "POST",
+        body: JSON.stringify({ bloodGroup, location, phone, name }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(response => {
+        alert("✔️ Your request has been sent successfully!");
+      })
+      .catch(error => {
+        alert("❌ Something went wrong. Try again later.");
+      });
+    });
+  </script>
+</body>
+</html>
